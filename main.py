@@ -93,3 +93,29 @@ async def get_files(file_path: str):
     else:
         return {"file_content": None}
     
+@app.get('/resource/{file_path:path}')
+async def get_resource(file_path: str, limit: int = 3):
+    if os.path.exists(file_path):
+        with open(file_path, 'r') as f:
+            file_content = f.read()
+
+        result = {}
+        
+        counter = 0
+        for row in file_content.split('\n'):
+            if counter >= limit:
+                break
+
+            data = row.split(':')
+
+            name = data[0]
+            points = int(data[1])
+
+            result[name] = points
+            
+            counter += 1
+
+        return result
+    else:
+        return {"file_content": None}
+    
