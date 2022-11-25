@@ -1,0 +1,22 @@
+01. Verstappen: 454
+02. Leclerc: 308
+03. Perez: 305
+04. Russell: 275
+05. Sainz: 246
+06. Hamilton: 240
+07. Norris: 122
+08. Ocon: 92
+09. Alonso: 81
+10. Bottas: 49
+11. Ricciardo: 37
+12. Vettel: 37
+13. Magnussen: 25
+14. Gasly: 23
+15. Stroll: 18
+16. Schumacher: 12
+17. Tsunoda: 12
+18. Zhou: 6
+19. Albon: 4
+20. Latifi: 2
+21. De Vries: 2
+22. Hulkenberg: 0
