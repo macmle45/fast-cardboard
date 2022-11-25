@@ -80,14 +80,15 @@ async def get_models(model_name: ModelName):
 
 
 @app.get('/files/{file_path:path}')
-async def get_files(file_path: str):
-    file_path = 'files/'+file_path
-    
+async def get_files(file_path: str):    
     if os.path.exists(file_path):
         with open(file_path, 'r') as f:
             file_content = f.read()
     
-        return {"file_content": file_content}
+        return {
+                "file_path": file_path,
+                "file_content": file_content
+                }
     
     else:
         return {"file_content": None}
