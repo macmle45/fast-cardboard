@@ -4,6 +4,8 @@ import os
 from typing import Union
 from random import randint
 
+from request_body import Item
+
 
 # sample dict data
 data = {
@@ -34,7 +36,7 @@ async def root():
     return {"message": "Hello world"}
 
 
-@app.get('/items/{item_id}')
+@app.get('/item/{item_id}')
 async def get_item(item_id: int):
     response = {
         "item_id": item_id,
@@ -137,3 +139,16 @@ async def get_resource(file_path: str, limit: int, skip: int = 0, random_item: U
     else:
         return {"file_content": None}
     
+
+@app.post('/items/')
+async def create_item(item: Item):
+    result = {
+        'name': item.name,
+        'price': item.price,
+    }
+
+    if item.tax:
+        result['tax'] = item.tax
+        result['price_tax_incl'] = item.price + (item.tax / 100 * item.price)
+    
+    return result
