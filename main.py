@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Query
 from enum import Enum
 import os
 from typing import Union
@@ -37,11 +37,14 @@ async def root():
 
 
 @app.get('/item/{item_id}')
-async def get_item(item_id: int):
+async def get_item(item_id: int, q: str | None = Query(default=None, min_length=3, max_length=10)):
     response = {
         "item_id": item_id,
         "value": data[item_id]
     }
+
+    if q:
+        response['q'] = q
 
     return response
 
